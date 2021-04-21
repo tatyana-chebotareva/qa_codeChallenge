@@ -24,4 +24,33 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+describe("Calculator", () => {
+  dataset.forEach(dataset => { //going through every item in original dataset Array
+    switch (dataset.method) { //switching based on method
+      case "add":
+        it (`can do addition: ${dataset.x}+${dataset.y}=${dataset.x+dataset.y}`, () => {
+          let result  = dataset.x + dataset.y;
+          expect(calculator.add(dataset.x,dataset.y)).toBe(result);
+        })
+        break;
+      case "subtract":
+        it (`can do subtraction: ${dataset.x}-${dataset.y}=${dataset.x-dataset.y}`, () => {
+         let result  = dataset.x - dataset.y;
+         expect(calculator.subtract(dataset.x,dataset.y)).toBe(result);
+       })
+        break;
+      case "multiply":
+        it (`can do multiplication: ${dataset.x}x${dataset.y}=${dataset.x*dataset.y}`, () => {
+          let result  = dataset.x * dataset.y;
+          expect(calculator.multiply(dataset.x,dataset.y)).toBe(result);
+        })
+        break;
+      case "divide":
+        it (`can do division: ${dataset.x}/${dataset.y}=${dataset.x/dataset.y}`, () => {
+          let result  = dataset.x / dataset.y;
+          expect(calculator.divide(dataset.x,dataset.y)).toBe(result);
+        })
+      break;
+    }
+  });
+});
