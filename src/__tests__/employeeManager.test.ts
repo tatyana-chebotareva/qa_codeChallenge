@@ -77,4 +77,12 @@ describe("Employee Manager", () => {
     let employee = await em.getEmployeeInfo();
     expect(employee).toEqual({id: 1, name: "Bernice Ortiz", phone: "4824931093", title: "CEO"});
   })
+
+  test("Header and Footer are present", async () => {
+    await em.waitForPageToLoad;
+  })
+
+  test("Test that the list of employees is always visible (footer should not block it)", async () => {
+    for (let i:number=0;i<49;i++) {await em.addEmployee();} //adding 50 employees
+  })
 });

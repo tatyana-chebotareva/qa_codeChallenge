@@ -22,6 +22,8 @@ export class EmployeeHandler {
   saveButton: By = By.id("saveBtn");
   cancelButton: By = By.name("cancel");
   errorCard: By = By.css(".errorCard");
+  header: By = By.css(".titleBar");
+  footer: By = By.css(".footer");
   homePage: string =
     "https://devmountain-qa.github.io/employee-manager/1.2_Version/index.html";
 
@@ -140,6 +142,12 @@ export class EmployeeHandler {
     await this.driver.wait(until.elementLocated(By.id("employeeTitle")));
     let title = await this.driver.findElement(By.id("employeeTitle"));
     await this.driver.wait(until.elementTextIs(title, name));
+    return;
+  }
+
+  async waitForPageToLoad(): Promise<void> { //waiting for header and footer to load
+    await this.driver.findElement(this.header);
+    await this.driver.findElement(this.footer);
     return;
   }
 
